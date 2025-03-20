@@ -1,5 +1,5 @@
 let tasks=[{
-    id: 6,
+    id: 1,
     title: "titulo",
     description: "SOY UNA TAREA",
     completed: "true",
@@ -20,7 +20,7 @@ module.exports = {
         res.json(tasks)
     },
 
-    create : (req,res) =>{
+    createTask : (req,res) =>{
         const {title, description, completed, createdAt} = req.body
         if([title, description, completed, createdAt].includes("")|| !title || !description || completed===undefined || !createdAt){
             return res.status(400).json({
@@ -47,7 +47,7 @@ module.exports = {
 
     },
 
-    update: (req, res) => {
+    updateTask: (req, res) => {
         const id = req.params.id
         
         const task= tasks.find(task => task.id === +id)
@@ -70,6 +70,26 @@ module.exports = {
             msg: "Tarea actualizada con exito con existo",
             task
             })
-    }
+    },
 
+    deleteTask: (req,res) => {
+        const id = req.params.id
+
+        const tasksFiltred = tasks.filter( task => task.id != +id)
+
+        if(tasksFiltred === tasks) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Tarea no encontrada'
+            })
+        }
+
+        tasks= tasksFiltred
+
+        res.status(201).json({
+            ok:true,
+            msg: "Tarea eliminada con exito con existo",
+            })
+        
+    }
 }
