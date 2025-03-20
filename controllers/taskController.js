@@ -1,12 +1,12 @@
 let tasks=[{
-    id: 1,
+    id: 8,
     title: "titulo",
     description: "SOY UNA TAREA",
     completed: "true",
     createdAt: "HOY"
   },
   {
-    id: 2,
+    id: 5,
     title: "titulo",
     description: "SOY UNA TAREA",
     completed: "true",
@@ -29,8 +29,10 @@ module.exports = {
               })
         }
 
-        const newTask = {
-            id: tasks.length+1,
+        let highTaskId = tasks.length > 0 ? Math.max(...tasks.map(task=> task.id)) : 0
+
+        let newTask = {
+            id: highTaskId+1,
             title,
             description,
             completed,
