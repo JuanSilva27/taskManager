@@ -51,7 +51,8 @@ module.exports = {
 
     updateTask: (req, res) => {
         const id = req.params.id
-        
+        const body = req.body
+
         const task= tasks.find(task => task.id === +id)
 
         console.log(task)
@@ -62,10 +63,10 @@ module.exports = {
             })
         }
 
-        task.title = req.body.title ?? task.title
-        task.description = req.body.description ?? task.description
-        task.completed = req.body.completed ?? task.completed
-        task.createdAt = req.body.createdAt ?? task.createdAt
+        task.title = body.title && body.title.trim() !== "" ? body.title : task.title
+        task.description = body.description  && body.description.trim() !== "" ? body.title : task.description
+        task.completed = body.completed !== undefined ? body.completed : task.completed
+        task.createdAt = body.createdAt && body.createdAt.trim() !== "" ? body.createdAt : task.createdAt
 
         res.status(201).json({
             ok:true,
