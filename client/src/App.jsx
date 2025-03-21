@@ -1,9 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import TaskProvider from "./context/TaskProvider";
+import {TaskProvider} from "./context/TaskProvider";
 import { Header } from "./components/header";
 import { SideBar } from "./components/SideBar";
-import { Link } from "react-router-dom";
-import { TaskPreview } from "./components/TaskPreview";
+import { Tasks } from "./pages/Tasks";
 
 
 function App() {
@@ -21,7 +20,7 @@ function App() {
                 <main className="flex-1 p-10">
                   <div className='bg-white p-5 shadow mt-10 rounded-md'>
 
-                    <TaskPreview></TaskPreview>
+                    <Tasks></Tasks>
 
                   </div>
                 </main>
