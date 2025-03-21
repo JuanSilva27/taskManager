@@ -17,7 +17,11 @@ let tasks=[{
 
 module.exports = {
     list : (req, res) =>{
-        res.json(tasks)
+        res.status(201).json({
+            ok:true,
+            msg:"Lista de tareas",
+            tasks,
+        })
     },
 
     createTask : (req,res) =>{
