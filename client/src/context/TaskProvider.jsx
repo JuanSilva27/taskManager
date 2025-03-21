@@ -32,4 +32,4 @@ const TaskProvider = ({ children }) => {
 
 export { TaskProvider }
 
-export default TaskProvider
+export default TaskContext
