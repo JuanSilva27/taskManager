@@ -21,7 +21,7 @@ export const TaskPreview = ({ title, description, createdAt, id }) => {
                 <div class="flex items-center justify-between mt-4">
                     <Link to={`/projects/edit/${id}`} className="uppercase text-sm text-gray-400 hover:text-gray-800 font-bold">editar tarea</Link>
 
-                    <Link to={`/projects/delete/${id}`} className="uppercase text-sm text-red-300 hover:text-red-600 font-bold">
+                    <div className="uppercase text-sm text-red-300 hover:text-red-600 font-bold">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
@@ -42,7 +42,7 @@ export const TaskPreview = ({ title, description, createdAt, id }) => {
                             />
                         </svg>
 
-                    </Link>
+                    </div>
                 </div>
             </div>
 
