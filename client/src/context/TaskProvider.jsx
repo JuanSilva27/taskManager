@@ -16,20 +16,36 @@ const TaskProvider = ({ children }) => {
             console.log("a")
         } catch (error) {
             console.error(error);
-            console.log("hola")
         }
+    }
+
+    const deleteTask = async (id) =>{
+        try {
+            const { data } = await clientAxios.delete(`/tasks/${id}`)
+
+            const tasksFiltered = tasks.filter((task) => task.id !== id);
+
+            setTasks(tasksFiltered)
+
+        } catch (error) {  
+            console.error(error);
+        }
+
     }
 
     return (
         <TaskContext.Provider
             value={{
                 tasks,
-                getTasks
+                getTasks,
+                deleteTask
             }}
         >
             {children}
         </TaskContext.Provider>
     )
+
+    
 }
 
 export { TaskProvider }
