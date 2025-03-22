@@ -26,7 +26,7 @@ export const TaskPreview = ({ title, description, createdAt, id }) => {
                 </p>
 
                 <div class="flex items-center justify-between mt-4">
-                    <Link to={`/projects/edit/${id}`} className="uppercase text-sm text-gray-400 hover:text-gray-800 font-bold">editar tarea</Link>
+                    <Link to={`/edit_task/${id}`} className="uppercase text-sm text-gray-400 hover:text-gray-800 font-bold">editar tarea</Link>
 
                     <div className="uppercase text-sm text-red-300 hover:text-red-600 font-bold">
 
