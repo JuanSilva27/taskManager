@@ -1,9 +1,10 @@
 import React from 'react';
+import { FormTask } from '../components/FormTask';
 
  export const TaskEdit = () => {
     return (
         <div>
-            <h1>hola</h1> 
+            <FormTask/>
         </div>
     );
 };
