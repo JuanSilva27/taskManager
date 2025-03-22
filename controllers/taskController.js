@@ -2,14 +2,14 @@ let tasks=[{
     id: 8,
     title: "titulo8",
     description: "SOY UNA TAREA",
-    completed: "true",
+    completed: true,
     createdAt: "HOY"
   },
   {
     id: 5,
     title: "titulo5",
     description: "SOY UNA TAREA",
-    completed: "true",
+    completed: true,
     createdAt: "HOY"
   },
 
