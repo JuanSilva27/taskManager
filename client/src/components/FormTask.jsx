@@ -1,9 +1,40 @@
 import React from 'react';
 import { Button } from './Button';
+import useTasks from '../hooks/useTasks';
+import { useForm } from '../hooks/useForm';
 
 export const FormTask = () => {
+    const {tasks, storeTasks} = useTasks()
+    const { formValues, handleInputChange} = useForm(
+        {
+            title: "",
+            description: "",
+            createdAt: "",
+            completed: false,
+          
+        }
+    )
+
+    let {title, description, createdAt, completed} = formValues
+
+    const handleSubmit = (e)=>{
+        e.preventDefault()
+        if([title, description,createdAt].includes("") || completed === undefined){
+            return null
+        }
+        storeTasks({
+            title,
+            description,
+            createdAt,
+            completed
+        })
+        console.log(tasks)
+    }
     return (
-        <form action="" className="bg-white py-5 px-5 md:w-4/4 lg:w-3/4 rounded-md border-2">
+        <form 
+            className="bg-white py-5 px-5 md:w-4/4 lg:w-3/4 rounded-md border-2"
+            onSubmit={handleSubmit}
+        >
             <div className='mb-5'>
                 <label
                     htmlFor="name"
@@ -13,13 +44,14 @@ export const FormTask = () => {
                 </label>
 
                 <input
-                    id='tittle'
+                    id='title'
                     type="text"
                     placeholder='Titulo de la tarea'
                     className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    value={"TITULO"}
-                    name='tittle'
+                    /* value={"TITULO"} */
+                    name='title'
                     ref={null}
+                    onChange={handleInputChange}
                 />
             </div>
 
@@ -37,9 +69,10 @@ export const FormTask = () => {
                     type="text"
                     placeholder='Descripcion de la tarea'
                     className='border w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                    value={"description"}
+                    /* value={"description"} */
                     name='description'
                     ref={null}
+                    onChange={handleInputChange}
                 />
 
             </div>
@@ -57,8 +90,9 @@ export const FormTask = () => {
                     id="createdAt"
                     type="date"
                     className='border w-full p-2 mt-2 rounded-md'
-                    value={"1996-03-12"}
+                    /* value={"1996-03-12"} */
                     name='createdAt'
+                    onChange={handleInputChange}
                 />
             </div>
 
@@ -75,6 +109,9 @@ export const FormTask = () => {
                     id='completed'
                     type="checkbox"
                     className='w-5 h-5 accent-blue-500 border-gray-300 rounded focus:ring focus:ring-blue-200  p-2  rounded-md'
+                    name='completed'
+                    checked={completed}
+                    onChange={handleInputChange}
                 />
 
             </div>

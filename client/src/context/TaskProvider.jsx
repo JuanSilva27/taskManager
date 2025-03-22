@@ -18,8 +18,9 @@ const TaskProvider = ({ children }) => {
         }
     }
 
-    const storeTask = async (task) => {
+    const storeTasks = async (task) => {
         try {
+            console.log(task)
             if(task.id) {
                 const { data } = await clientAxios.put(
                     `/tasks/${task.id}`,
@@ -66,7 +67,7 @@ const TaskProvider = ({ children }) => {
             value={{
                 tasks,
                 getTasks,
-                storeTask,
+                storeTasks,
                 deleteTask
             }}
         >
