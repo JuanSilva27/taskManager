@@ -3,14 +3,14 @@ let tasks=[{
     title: "titulo8",
     description: "SOY UNA TAREA",
     completed: true,
-    createdAt: "HOY"
+    createdAt: "1996-03-27"
   },
   {
     id: 5,
     title: "titulo5",
     description: "SOY UNA TAREA",
     completed: true,
-    createdAt: "HOY"
+    createdAt: "2003-04-13"
   },
 
 ]
