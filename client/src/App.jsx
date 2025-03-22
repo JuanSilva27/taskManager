@@ -1,10 +1,9 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { TaskProvider } from "./context/TaskProvider";
-import { Header } from "./components/header";
-import { SideBar } from "./components/SideBar";
 import { Tasks } from "./pages/Tasks";
 import { MainLayout } from "./layouts/mainLayout";
 import { TaskEdit } from "./pages/TaskEdit";
+import { TaskAdd } from "./pages/TaskAdd";
 
 
 function App() {
@@ -17,6 +16,7 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Tasks />} />
             <Route path="/edit_task/:id" element={<TaskEdit />} />
+            <Route path="/add_task" element={<TaskAdd />} />
 
 
 

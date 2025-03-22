@@ -5,7 +5,7 @@ export const Header = () => {
     return (
         <div className=" top-0 left-0 bg-white w-full shadow">
         <div className="container m-auto flex justify-between items-center text-gray-700">
-          <a className="pl-8 py-4 text-xl font-bold text-green-600 hover:text-green-600" href="/projects">
+          <a className="pl-8 py-4 text-xl font-bold text-green-600 hover:text-green-600" href="/">
             Task Manager
           </a>
           <input
