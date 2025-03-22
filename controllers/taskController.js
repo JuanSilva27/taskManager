@@ -48,7 +48,7 @@ module.exports = {
         res.status(201).json({
             ok:true,
             msg: "Tarea guardada con existo",
-            newTask
+            task: newTask
             })
 
     },

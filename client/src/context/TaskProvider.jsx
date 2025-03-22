@@ -13,9 +13,37 @@ const TaskProvider = ({ children }) => {
         try {
             const { data } = await clientAxios.get("/tasks")
             setTasks(data.tasks)
-            console.log("a")
         } catch (error) {
             console.error(error);
+        }
+    }
+
+    const storeTask = async (task) => {
+        try {
+            if(task.id) {
+                const { data } = await clientAxios.put(
+                    `/tasks/${task.id}`,
+                     task
+                
+            )
+
+                const tasksUpdated = tasks.map ((t)=>{
+                if (t.id === data.task.id) {
+                    return data.task
+                }
+
+                return t
+                 })
+
+                setTasks(tasksUpdated)
+                   
+            } else {
+                const {data} = await clientAxios.post(`/tasks`, task)
+                setTasks([...tasks, data.task])
+            }
+            
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -38,6 +66,7 @@ const TaskProvider = ({ children }) => {
             value={{
                 tasks,
                 getTasks,
+                storeTask,
                 deleteTask
             }}
         >
