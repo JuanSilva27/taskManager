@@ -1,4 +1,4 @@
-const tasks = require('../database/taskDB')
+let tasks = require('../database/taskDB')
 
 module.exports = {
     list : (req, res) =>{
