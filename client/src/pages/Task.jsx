@@ -27,22 +27,20 @@ export const Task = () => {
                         <path
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832
-19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863
-4.487zm0 0L19.5 7.125"
+                            d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125"
                         />
                     </svg>
                     <p>Editar</p>
                 </Link>
             </div>
             <div className="flex justify-between">
-            <h2 className="text-2xl uppercase font-bold text-gray-600">
-              {description}
-            </h2>
-            <p>Fecha de creacion: {createdAt}</p>
-          </div>
+                <h2 className="text-2xl uppercase font-bold text-gray-600">
+                    {description}
+                </h2>
+                <p>Fecha de creacion: {createdAt}</p>
+            </div>
             <hr className="border-b border-gray-600" />
-            <p>{completed? "Completado" : "Sin completar"}</p>
+            <p>{completed ? "Completado" : "Sin completar"}</p>
 
         </>
     );
