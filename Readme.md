@@ -91,3 +91,4 @@ Esto iniciará tanto el servidor del **Backend** como la aplicación de **Fronte
 2. Utiliza la API de tareas, que se conecta automáticamente con el backend en http://localhost:3000/api.
 
 
+![image](screenshots\Desktopmain.png)
