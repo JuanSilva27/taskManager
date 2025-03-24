@@ -37,13 +37,13 @@ export const Header = () => {
                 >
                   Tareas
                 </Link>
-                <button
+                <div
                   type="button"
                   className="hover:bg-red-200 py-4 px-6 w-full"
 
                 >
                   Cerrar sesión
-                </button>
+                </div>
               </div>
             </div>
           </button>
