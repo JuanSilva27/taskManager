@@ -3,9 +3,10 @@ import { useForm } from '../hooks/useForm';
 import useTasks from '../hooks/useTasks';
 import { useLocation, useParams } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { Alerts } from './Alerts';
 
 export const FormTask = () => {
-    const { storeTask, task, getTask } = useTasks()
+    const { storeTask, task, getTask, alert,showAlert } = useTasks()
     const { formValues, handleInputChange, setFormValues, reset } = useForm(
         {
             title: "",
@@ -50,6 +51,7 @@ export const FormTask = () => {
 
         e.preventDefault()
         if ([title, description, createdAt].includes("") || completed === undefined) {
+            showAlert('Todos los campos son obligatorios')
             return null
         }
         storeTask({
@@ -65,6 +67,7 @@ export const FormTask = () => {
             className="bg-white py-5 px-5 md:w-4/4 lg:w-3/4 rounded-md border-2"
             onSubmit={handleSubmit}
         >
+             {alert.msg && <Alerts {...alert} />}
             <div className='mb-5'>
                 <label
                     htmlFor="name"
