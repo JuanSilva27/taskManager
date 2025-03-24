@@ -59,7 +59,6 @@ export const FormTask = () => {
             createdAt,
             completed
         })
-        console.log("2")
     }
     return (
         <form

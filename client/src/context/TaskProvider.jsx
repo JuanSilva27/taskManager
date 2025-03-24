@@ -1,5 +1,6 @@
 import React, {createContext, useState } from "react"
 import { clientAxios } from "../../config/clientAxios"
+import { useNavigate } from "react-router-dom"
 
 
 
@@ -9,6 +10,8 @@ const TaskContext = createContext()
 const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([])
     const [task, setTask] = useState({})
+    const navigate = useNavigate()
+
 
     const getTasks = async () => {
         try {
@@ -52,6 +55,8 @@ const TaskProvider = ({ children }) => {
                 const {data} = await clientAxios.post(`/tasks`, task)
                 setTasks([...tasks, data.task])
             }
+
+            navigate('/')
             
         } catch (error) {
             console.log(error)
