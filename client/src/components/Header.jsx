@@ -20,7 +20,6 @@ export const Header = () => {
             <button
               type="button"
               className="hover:bg-red-200 py-4 px-6 "
-              /* onClick={closeSession} */
             >
               Cerrar sesión
             </button>
@@ -33,7 +32,7 @@ export const Header = () => {
             <div className="absolute top-0 -right-full h-screen w-8/12 bg-white border-opacity-0 group-focus:right-0 group-focus:opacity-100 transition-all duration-300">
               <div className="flex flex-col items-center w-full text-base cursor-pointer pt-10">
                 <Link
-                  to="/projects"
+                  to="/"
                   className="hover:bg-gray-200  py-4 px-6 w-full"
                 >
                   Tareas
@@ -41,7 +40,7 @@ export const Header = () => {
                 <button
                   type="button"
                   className="hover:bg-red-200 py-4 px-6 w-full"
-                  /* onClick={closeSession} */
+
                 >
                   Cerrar sesión
                 </button>

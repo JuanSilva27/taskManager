@@ -16,7 +16,9 @@ export const Tasks = () => {
         <div className='grid grid-cols-2'>
             {tasks.length > 0 ? (
                 tasks.map((task) => (
-                    <TaskPreview key={task.id} {...task} />
+                    <div className='m-2'>
+                        <TaskPreview key={task.id} {...task} />
+                    </div>
                 ))
             ) : (
                 <p>No hay tareas disponibles</p>

@@ -12,7 +12,14 @@ let tasks=[{
     completed: true,
     createdAt: "2003-04-13"
   },
-
+  {
+    id: 53,
+    title: "titulo53",
+    description: "SOY UNA TAREA",
+    completed: true,
+    createdAt: "2002-04-13"
+  },
+  
 ]
 
 module.exports = {
