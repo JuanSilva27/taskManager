@@ -1,53 +1,50 @@
-import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
-import useTasks from '../hooks/useTasks';
 import { useForm } from '../hooks/useForm';
+import useTasks from '../hooks/useTasks';
 import { useParams } from 'react-router-dom';
+import { useEffect, useRef, useState } from 'react';
 
 export const FormTask = () => {
-    const {task, storeTask} = useTasks()
-    const { formValues, handleInputChange, setFormValues} = useForm(
+    const { storeTask, task, getTask } = useTasks()
+    const { formValues, handleInputChange, setFormValues } = useForm(
         {
             title: "",
             description: "",
             createdAt: "",
             completed: false,
-          
+
         }
     )
     const { id } = useParams()
-    let {title, description, createdAt, completed} = formValues
-    console.log(formValues)
+    let { title, description, createdAt, completed } = formValues
 
-    useEffect(()=>{
-        console.log(task)
-        if (id){
-            inputTitle.current.value = task.title
-            inputDescription.current.value = task.description
-            inputCreatedAt.current.value = task.createdAt?.split("T")[0]
+    useEffect(() => {
+        if (id && Object.keys(task).length === 0) {
+            getTask(id)
+        }
+    }, [id, getTask])
+
+
+    useEffect(() => {
+        if (task && Object.keys(task).length > 0) {
 
             setFormValues({
-                title : task.title,
-                description: task.description,
-                createdAt: task.createdAt,
-                completed: task.completed || false 
+                title: task.title || '',
+                description: task.description || '',
+                createdAt: task.createdAt || '',
+                completed: task.completed || false
             })
-            console.log(task)
         }
-    }, [task])
+    }, [task, setFormValues])
 
-    const inputTitle =useRef(null)
-    const inputDescription =useRef(null)
-    const inputCreatedAt =useRef(null)
+    const handleSubmit = (e) => {
 
-    
-    const handleSubmit = (e)=>{
         e.preventDefault()
-        if([title, description,createdAt].includes("") || completed === undefined){
+        if ([title, description, createdAt].includes("") || completed === undefined) {
             return null
         }
         storeTask({
-            id: id ? id: null,
+            id: id ? id : null,
             title,
             description,
             createdAt,
@@ -56,7 +53,7 @@ export const FormTask = () => {
         console.log("2")
     }
     return (
-        <form 
+        <form
             className="bg-white py-5 px-5 md:w-4/4 lg:w-3/4 rounded-md border-2"
             onSubmit={handleSubmit}
         >
@@ -75,7 +72,7 @@ export const FormTask = () => {
                     className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
                     value={title}
                     name='title'
-                    ref={inputTitle}
+                    /* ref={inputTitle} */
                     onChange={handleInputChange}
                 />
             </div>
@@ -96,7 +93,7 @@ export const FormTask = () => {
                     className='border w-full p-2 mt-2 placeholder-gray-400 rounded-md'
                     value={description}
                     name='description'
-                    ref={inputDescription}
+                    /* ref={inputDescription} */
                     onChange={handleInputChange}
                 />
 
@@ -117,13 +114,13 @@ export const FormTask = () => {
                     className='border w-full p-2 mt-2 rounded-md'
                     value={createdAt}
                     name='createdAt'
-                    ref={inputCreatedAt}
+                    /* ref={inputCreatedAt} */
                     onChange={handleInputChange}
                 />
             </div>
 
             <div className='my-5 flex justify-between items-center'>
-                <label 
+                <label
                     htmlFor="completed"
                     className='text-gray-700 uppercase font-bold text-sm'
                 >
@@ -131,7 +128,7 @@ export const FormTask = () => {
 
                 </label>
 
-                <input 
+                <input
                     id='completed'
                     type="checkbox"
                     className='w-5 h-5 accent-blue-500 border-gray-300 rounded focus:ring focus:ring-blue-200  p-2  rounded-md'
@@ -142,7 +139,7 @@ export const FormTask = () => {
 
             </div>
 
-            <Button text={id ? 'Actualizar' : 'Guardar'}/>
+            <Button text={id ? 'Actualizar' : 'Guardar'} />
 
         </form>
     );
