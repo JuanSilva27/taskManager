@@ -1,11 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import useTasks from '../hooks/useTasks';
+import Swal from 'sweetalert2';
 export const TaskPreview = ({ title, description, createdAt, id }) => {
     const { deleteTask } = useTasks()
 
     const handleDelete = () => {
-        deleteTask(id)
+        Swal.fire({
+            title:'¿Estas seguro de querer eliminar esta tarea?',
+            showCancelButton: true,
+            confirmButtonColor: 'red',
+            confirmButtonText: 'Confirmar'
+        }).then((result)=>{
+            if(result.isConfirmed){
+                deleteTask(id)
+
+            }
+        })
     }
 
     return (

@@ -1,8 +1,19 @@
 import React, {createContext, useState } from "react"
 import { clientAxios } from "../../config/clientAxios"
+import Swal from 'sweetalert2'
 import { useNavigate } from "react-router-dom"
 
-
+const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
 
 const TaskContext = createContext()
 
@@ -70,6 +81,11 @@ const TaskProvider = ({ children }) => {
             const tasksFiltered = tasks.filter((task) => task.id !== id);
 
             setTasks(tasksFiltered)
+
+            Toast.fire({
+                icon: "success",
+                title: data.msg,
+              });
 
         } catch (error) {  
             console.error(error);
