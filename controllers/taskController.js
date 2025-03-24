@@ -24,6 +24,26 @@ module.exports = {
         })
     },
 
+    detail : (req, res) =>{
+        const {id} = req.params
+        const task = tasks.find(task => task.id === +id)
+        
+        console.log(id)
+        if (!task) {
+            return res.status(404).json({
+                ok: false,
+                msg: 'Tarea no encontrada'
+            })
+        }
+
+        return res.status(201).json({
+            ok:true,
+            msg:"Tarea encontrada",
+            task
+        })
+
+    },
+
     createTask : (req,res) =>{
         const {title, description, completed, createdAt} = req.body
         if([title, description, completed, createdAt].includes("")|| !title || !description || completed===undefined || !createdAt){
@@ -63,12 +83,12 @@ module.exports = {
         if (!task) {
             return res.status(404).json({
                 ok: false,
-                msg: 'Tarea no encontrada'
+                msg: 'Tarea no encontrada',
             })
         }
 
         task.title = body.title && body.title.trim() !== "" ? body.title : task.title
-        task.description = body.description  && body.description.trim() !== "" ? body.title : task.description
+        task.description = body.description  && body.description.trim() !== "" ? body.description : task.description
         task.completed = body.completed !== undefined ? body.completed : task.completed
         task.createdAt = body.createdAt && body.createdAt.trim() !== "" ? body.createdAt : task.createdAt
 

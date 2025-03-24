@@ -1,7 +1,7 @@
 const express = require ('express')
 const router = express.Router()
 
-const {list, createTask, updateTask, deleteTask} = require("../controllers/taskController")
+const {list, createTask, updateTask, deleteTask, detail} = require("../controllers/taskController")
 
 router
     .route("/")
@@ -9,6 +9,7 @@ router
         .post(createTask)
  router       
     .route("/:id")
+        .get(detail)
         .put(updateTask)
         .delete( deleteTask)
 

@@ -8,6 +8,7 @@ const TaskContext = createContext()
 
 const TaskProvider = ({ children }) => {
     const [tasks, setTasks] = useState([])
+    const [task, setTask] = useState({})
 
     const getTasks = async () => {
         try {
@@ -18,7 +19,16 @@ const TaskProvider = ({ children }) => {
         }
     }
 
-    const storeTasks = async (task) => {
+    const getTask = async (id) =>{
+        try {
+            const { data } = await clientAxios.get(`/tasks/${id}`)
+            setTask(data.task)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const storeTask = async (task) => {
         try {
             console.log(task)
             if(task.id) {
@@ -36,7 +46,7 @@ const TaskProvider = ({ children }) => {
                 return t
                  })
 
-                setTasks(tasksUpdated)
+                setTask(tasksUpdated)
                    
             } else {
                 const {data} = await clientAxios.post(`/tasks`, task)
@@ -67,7 +77,9 @@ const TaskProvider = ({ children }) => {
             value={{
                 tasks,
                 getTasks,
-                storeTasks,
+                task,
+                getTask,
+                storeTask,
                 deleteTask
             }}
         >

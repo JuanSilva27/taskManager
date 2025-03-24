@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Button } from './Button';
 import useTasks from '../hooks/useTasks';
 import { useForm } from '../hooks/useForm';
+import { useParams } from 'react-router-dom';
 
 export const FormTask = () => {
-    const {tasks, storeTasks} = useTasks()
-    const { formValues, handleInputChange} = useForm(
+    const {task, storeTask} = useTasks()
+    const { formValues, handleInputChange, setFormValues} = useForm(
         {
             title: "",
             description: "",
@@ -14,21 +15,45 @@ export const FormTask = () => {
           
         }
     )
-
+    const { id } = useParams()
     let {title, description, createdAt, completed} = formValues
+    console.log(formValues)
 
+    useEffect(()=>{
+        console.log(task)
+        if (id){
+            inputTitle.current.value = task.title
+            inputDescription.current.value = task.description
+            inputCreatedAt.current.value = task.createdAt?.split("T")[0]
+
+            setFormValues({
+                title : task.title,
+                description: task.description,
+                createdAt: task.createdAt,
+                completed: task.completed || false 
+            })
+            console.log(task)
+        }
+    }, [task])
+
+    const inputTitle =useRef(null)
+    const inputDescription =useRef(null)
+    const inputCreatedAt =useRef(null)
+
+    
     const handleSubmit = (e)=>{
         e.preventDefault()
         if([title, description,createdAt].includes("") || completed === undefined){
             return null
         }
-        storeTasks({
+        storeTask({
+            id: id ? id: null,
             title,
             description,
             createdAt,
             completed
         })
-        console.log(tasks)
+        console.log("2")
     }
     return (
         <form 
@@ -48,9 +73,9 @@ export const FormTask = () => {
                     type="text"
                     placeholder='Titulo de la tarea'
                     className="border w-full p-2 mt-2 placeholder-gray-400 rounded-md"
-                    /* value={"TITULO"} */
+                    value={title}
                     name='title'
-                    ref={null}
+                    ref={inputTitle}
                     onChange={handleInputChange}
                 />
             </div>
@@ -69,9 +94,9 @@ export const FormTask = () => {
                     type="text"
                     placeholder='Descripcion de la tarea'
                     className='border w-full p-2 mt-2 placeholder-gray-400 rounded-md'
-                    /* value={"description"} */
+                    value={description}
                     name='description'
-                    ref={null}
+                    ref={inputDescription}
                     onChange={handleInputChange}
                 />
 
@@ -90,8 +115,9 @@ export const FormTask = () => {
                     id="createdAt"
                     type="date"
                     className='border w-full p-2 mt-2 rounded-md'
-                    /* value={"1996-03-12"} */
+                    value={createdAt}
                     name='createdAt'
+                    ref={inputCreatedAt}
                     onChange={handleInputChange}
                 />
             </div>
@@ -116,7 +142,7 @@ export const FormTask = () => {
 
             </div>
 
-            <Button text={"Guardar"}/>
+            <Button text={id ? 'Actualizar' : 'Guardar'}/>
 
         </form>
     );
