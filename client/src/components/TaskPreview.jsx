@@ -21,13 +21,13 @@ export const TaskPreview = ({ title, description, createdAt, id, completed }) =>
     }
 
     return (
-        <div  class=" flex items-center justify-center">
-            <div class="w-full max-w-md px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800 mx m">
-                <div class="flex items-center justify-end">
+        <div  className=" flex items-center justify-center">
+            <div className="w-full max-w-md px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800 mx m">
+                <div className="flex items-center justify-end">
                   {completed ?<span className='px-3 py-1 text-xs text-green-800 uppercase bg-green-200 rounded-full dark:bg-green-300 dark:text-green-900'>Completado</span>:<span className='px-3 py-1 text-xs text-red-800 uppercase bg-red-200 rounded-full dark:bg-red-300 dark:text-red-900'>Incompleto</span>}
                 </div>
                 <Link to={`/tasks/${id}`}>
-                <h1 class="mt-2 text-lg font-semibold uppercase text-gray-800 dark:text-white">
+                <h1 className="mt-2 text-lg font-semibold uppercase text-gray-800 dark:text-white">
                     {title}
                 </h1>
                 <p>
@@ -39,7 +39,7 @@ export const TaskPreview = ({ title, description, createdAt, id, completed }) =>
                 </p>
                 </Link>
 
-                <div class="flex items-center justify-between mt-4">
+                <div className="flex items-center justify-between mt-4">
                     <Link to={`/edit_task/${id}`} className="uppercase text-sm text-gray-400 hover:text-gray-800 font-bold">editar tarea</Link>
 
                     <div className="uppercase text-sm text-red-300 hover:text-red-600 font-bold">
