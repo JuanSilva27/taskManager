@@ -4,6 +4,7 @@ import { Tasks } from "./pages/Tasks";
 import { MainLayout } from "./layouts/mainLayout";
 import { TaskEdit } from "./pages/TaskEdit";
 import { TaskAdd } from "./pages/TaskAdd";
+import { Task } from "./pages/Task";
 
 
 function App() {
@@ -16,11 +17,8 @@ function App() {
           <Route path="/" element={<MainLayout />}>
             <Route index element={<Tasks />} />
             <Route path="/edit_task/:id" element={<TaskEdit />} />
-            <Route path="/add_task" element={<TaskAdd />} />
-
-
-
-
+            {<Route path="/add_task" element={<TaskAdd />} />}
+            {<Route path="/tasks/:id" element={<Task/>} />}
           </Route>
 
 
