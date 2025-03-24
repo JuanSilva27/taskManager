@@ -90,5 +90,12 @@ Esto iniciará tanto el servidor del **Backend** como la aplicación de **Fronte
 
 2. Utiliza la API de tareas, que se conecta automáticamente con el backend en http://localhost:3000/api.
 
-
+## Vista Principal
 ![image](screenshots/main.png)
+
+## Si le damos click al icono de eliminar aparecera un letrero para confirmar si de verdad queremos eliminar la tarea
+!![image](screenshots/deleteConfirmation.png)
+
+## Si se le da a confirmar, la tarea sera eliminada y aparecera un pequeño cartel que nos lo confirma
+!![image](screenshots/deleteSucces.png)
+
