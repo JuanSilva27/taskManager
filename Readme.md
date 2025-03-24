@@ -99,3 +99,30 @@ Esto iniciará tanto el servidor del **Backend** como la aplicación de **Fronte
 - Si se le da a confirmar, la tarea sera eliminada y aparecera un pequeño cartel que nos lo confirma
 ![image](screenshots/deleteSucces.png)
 
+## Formulario de Creacion de Tarea
+
+![image](screenshots/createForm.png)
+
+- Una vez la tarea sea creada correctamente, se nos redirigira a la pagina principal donde estara la nueva tarea que acabamos de agregar
+
+![image](screenshots/newTaskAdd.png)
+
+## Formulario de Edicion de Tarea
+
+![image](screenshots/editTask.png)
+
+- No premite campos vacios
+
+![image](screenshots/notEmptyPls.png)
+
+- Ejemplo correcto de una tarea editada
+
+![image](screenshots/editTask2.png)
+
+- La tarea a sido actualizada con exito
+
+![image](screenshots/taskEditedOk.png)
+
+## Vista individual de una tarea    
+
+![image](screenshots/taskview.png)
