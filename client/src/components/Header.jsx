@@ -14,7 +14,7 @@ export const Header = () => {
             className="mt-3 mb-3 p-3 border rounded"
           />
           <div className="hidden md:flex items-center pr-10 text-base font-semibold cursor-pointer">
-            <Link to="/projects" className="hover:bg-gray-200 hover:text-green-800 font-bold  py-4 px-6">
+            <Link to="/" className="hover:bg-gray-200 hover:text-green-800 font-bold  py-4 px-6">
               Tareas
             </Link>
             <button
