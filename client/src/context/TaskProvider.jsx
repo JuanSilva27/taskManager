@@ -86,6 +86,11 @@ const TaskProvider = ({ children }) => {
             } else {
                 const { data } = await clientAxios.post(`/tasks`, task)
                 setTasks([...tasks, data.task])
+
+                Toast.fire({
+                    icon: "success",
+                    title: data.msg,
+                  })
             }
 
             navigate('/')
