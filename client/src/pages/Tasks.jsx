@@ -10,13 +10,11 @@ export const Tasks = () => {
         getTasks()
     }, [])
 
-    console.log(tasks)
-
     return (
         <div className='grid grid-cols-2'>
             {tasks.length > 0 ? (
                 tasks.map((task) => (
-                    <div className='m-2'>
+                    <div className='m-2 p-1'>
                         <TaskPreview key={task.id} {...task} />
                     </div>
                 ))

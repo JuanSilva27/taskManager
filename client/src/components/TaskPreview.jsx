@@ -2,8 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import useTasks from '../hooks/useTasks';
 import Swal from 'sweetalert2';
-export const TaskPreview = ({ title, description, createdAt, id }) => {
+export const TaskPreview = ({ title, description, createdAt, id, completed }) => {
     const { deleteTask } = useTasks()
+
 
     const handleDelete = () => {
         Swal.fire({
@@ -23,10 +24,10 @@ export const TaskPreview = ({ title, description, createdAt, id }) => {
         <div  class=" flex items-center justify-center">
             <div class="w-full max-w-md px-4 py-3 bg-white rounded-md shadow-md dark:bg-gray-800 mx m">
                 <div class="flex items-center justify-end">
-                    <span class="px-3 py-1 text-xs text-green-800 uppercase bg-green-200 rounded-full dark:bg-green-300 dark:text-green-900">completado</span>
+                  {completed ?<span className='px-3 py-1 text-xs text-green-800 uppercase bg-green-200 rounded-full dark:bg-green-300 dark:text-green-900'>Completado</span>:<span className='px-3 py-1 text-xs text-red-800 uppercase bg-red-200 rounded-full dark:bg-red-300 dark:text-red-900'>Incompleto</span>}
                 </div>
                 <Link to={`/tasks/${id}`}>
-                <h1 class="mt-2 text-lg font-semibold text-gray-800 dark:text-white">
+                <h1 class="mt-2 text-lg font-semibold uppercase text-gray-800 dark:text-white">
                     {title}
                 </h1>
                 <p>
